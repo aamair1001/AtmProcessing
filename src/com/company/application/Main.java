@@ -11,10 +11,10 @@ public class Main extends AccountNumbers {
 
     public static void main(String[] args)
     {
-        String Username = null;
-        String Password = null;
+        String username = null;
+        String password = null;
         String userOption = null;
-        String Accountnumber = null;
+        String accountnumberFromUser = null;
 
         double depositedAmount = 0;
 
@@ -25,14 +25,14 @@ public class Main extends AccountNumbers {
         System.out.println("Welcome to Zaid Bank");
 
         System.out.print("Enter  UserName: ");
-        Username = SC.nextLine();
-        System.out.print("Enter Password: ");
-        Password = SC.nextLine();
+        username = SC.nextLine();
+        System.out.print("Enter password: ");
+        password = SC.nextLine();
 
         do {
 
 
-        if (Username.equals(CommonConstants.username) && Password.equals(CommonConstants.password)) {
+        if (username.equals(CommonConstants.username) && password.equals(CommonConstants.password)) {
             System.out.println("A :  Withdraw");
             System.out.println("B :  Deposit");
             System.out.println("C :  Check Balance");
@@ -68,18 +68,17 @@ public class Main extends AccountNumbers {
                 case "D":
 
                     System.out.println(" Enter Account Number  ");
-                    Accountnumber = SC.nextLine();
+                    accountnumberFromUser = SC.nextLine();
 
                     System.out.println("How much Amount you want to Transfer");
                     depositedAmount = SC.nextDouble();
                     for (HashMap.Entry<Integer,Double> entry :accountNumber.entrySet())
                     {
-                    if (entry.getKey() == 9011)
+                    if (entry.getKey().toString().equals(accountnumberFromUser))
                     {
                         entry.setValue(entry.getValue()+depositedAmount);
-                    }else
-                    {
-                        System.out.printf("Error");
+                        System.out.println("Ammount Transfer success , new balance of user is  "+entry.getValue());
+
                     }
                 }
 
